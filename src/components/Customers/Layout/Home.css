@@ -1,11 +1,11 @@
 .hero-header {
-    background-image: url('C:\Users\Amanpreet Kaur\Desktop\evergreen\evergreen-wireless\egwireless\public\images\stayconnected.webp'); /* Replace with your image URL */
+    background-image: url('../../../public/images/stayconnected.webp'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     color: white;
   }
 .hero {
-  background-image: url('C:\Users\Amanpreet Kaur\Desktop\evergreen\evergreen-wireless\egwireless\public\images\stayconnected.webp'); /* Replace with your image URL */
+  background-image: url('../../../public/images/stayconnected.webp'); /* Replace with your image URL */
   background-size: cover;
   background-position: center;
   color: white;
