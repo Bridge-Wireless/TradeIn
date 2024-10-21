@@ -10,7 +10,7 @@ const loadFromLocalStorage = (key) => {
 };
 
 const Incentive = () => {
-  const [tradeInHistory, setTradeInHistory] = useState(loadFromLocalStorage('tradeInHistory'));
+  const [tradeInHistory] = useState(loadFromLocalStorage('tradeInHistory'));
   const [totalIncentive, setTotalIncentive] = useState(0);
 
   // Calculate total incentive on component mount or when history changes
@@ -19,11 +19,11 @@ const Incentive = () => {
     setTotalIncentive(incentive);
   }, [tradeInHistory]);
 
-  const clearIncentives = () => {
-    setTradeInHistory([]);
-    localStorage.removeItem('tradeInHistory');
-    setTotalIncentive(0);
-  };
+  // const clearIncentives = () => {
+  //   setTradeInHistory([]);
+  //   localStorage.removeItem('tradeInHistory');
+  //   setTotalIncentive(0);
+  // };
 
   return (
     <div className='container-fluid'>

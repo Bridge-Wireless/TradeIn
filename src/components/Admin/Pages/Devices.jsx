@@ -97,10 +97,10 @@ const Devices = () => {
     setDevices((prev) => [...prev, ...parsedDevices]);
   };
 
-  const clearDevices = () => {
-    setDevices([]);
-    localStorage.removeItem('devices');
-  };
+  // const clearDevices = () => {
+  //   setDevices([]);
+  //   localStorage.removeItem('devices');
+  // };
 
   const downloadCSVTemplate = () => {
     const csvContent =

@@ -60,10 +60,10 @@ const Users = () => {
     }
   };
   
-  const clearUsers = () => {
-    setUsers([]);
-    localStorage.removeItem('users');
-  };
+  // const clearUsers = () => {
+  //   setUsers([]);
+  //   localStorage.removeItem('users');
+  // };
 
     return (
       <>

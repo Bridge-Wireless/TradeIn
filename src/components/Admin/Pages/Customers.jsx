@@ -68,10 +68,10 @@ const Customers = () => {
     setCustomers(updatedCustomers);
   };
 
-  const clearCustomers = () => {
-    setCustomers([]);
-    localStorage.removeItem('customers');
-  };
+  // const clearCustomers = () => {
+  //   setCustomers([]);
+  //   localStorage.removeItem('customers');
+  // };
 
   const handleCSVUpload = (data) => {
     const uploadedCustomers = data.map((row) => ({

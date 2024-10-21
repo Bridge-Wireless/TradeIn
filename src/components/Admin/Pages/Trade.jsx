@@ -27,8 +27,8 @@ const createSampleCSV = () => {
 };
 
 const Trade = () => {
-  const [customers, setCustomers] = useState(loadFromLocalStorage('customers'));
-  const [devices, setDevices] = useState(loadFromLocalStorage('devices'));
+  const [customers] = useState(loadFromLocalStorage('customers'));
+  const [devices] = useState(loadFromLocalStorage('devices'));
   const [history, setHistory] = useState(loadFromLocalStorage('tradeInHistory'));
   const [currentPage, setCurrentPage] = useState(0); // Track the current page
 
@@ -88,10 +88,10 @@ const Trade = () => {
     }
   };
 
-  const clearHistory = () => {
-    setHistory([]);
-    localStorage.removeItem('tradeInHistory');
-  };
+  // const clearHistory = () => {
+  //   setHistory([]);
+  //   localStorage.removeItem('tradeInHistory');
+  // };
 
   const handleCSVUpload = (data) => {
     const uploadedData = data.map((row) => ({
