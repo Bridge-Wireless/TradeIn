@@ -28,7 +28,7 @@ const Home = () => {
         
             <section    className="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
        style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/images/stayconnected.webp)`,  
+        backgroundImage: `url(/images/stayconnected.webp)`,  
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover', // Optional: Makes the background cover the entire section
         backgroundPosition: 'center', // Optional: Centers the background image
@@ -51,7 +51,7 @@ const Home = () => {
             <div className="row align-items-center mb-5">
                 <div className="col-md-6">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/expertise.webp`}
+                        src={`/images/expertise.webp`}
                         alt="Our Expertise"
                         className="img-fluid"
                     />
@@ -70,7 +70,7 @@ const Home = () => {
             <div className="row align-items-center">
                 <div className="col-md-6 order-md-2">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/commitment.webp`}
+                        src={`/images/commitment.webp`}
                         alt="Our Expertise"
                         className="img-fluid"
                     />
@@ -88,7 +88,7 @@ const Home = () => {
             <div className="row align-items-center mb-5">
                 <div className="col-md-6">
                     <img
-                        src={`${process.env.PUBLIC_URL}/images/community.webp`}
+                        src={`/images/community.webp`}
                         alt="Our Expertise"
                         className="img-fluid"
                     />

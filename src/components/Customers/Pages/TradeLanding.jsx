@@ -19,7 +19,7 @@ const  TradeLanding= () => {
 
       <Row className="my-5">
         <Col md={12}>
-          <Image src={`${process.env.PUBLIC_URL}/images/trade.jpeg`} fluid />
+          <Image src={`/images/trade.jpeg`} fluid />
         </Col>
        
       </Row>
