@@ -13,7 +13,7 @@ const  TradeLanding= () => {
         and things that matter most. That’s why we offer the latest smartphones and accessories
         at competitive prices. Shop now and take your mobile experience to the next level.
       </p>
-      <Button variant="dark" size="lg" className="mt-3">
+      <Button variant="light" size="lg" className="mt-3">
          <Link to="/trade-quote">Get Started</Link>  
       </Button>
 

@@ -2,9 +2,21 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 
+
+import { useLocation, useNavigate } from 'react-router-dom';
+// Helper functions to manage local storage
+const loadFromLocalStorage = (key) => {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
+};
+const saveToLocalStorage = (key, data) => {
+    localStorage.setItem(key, JSON.stringify(data));
+};
+
 const CustomerInfoForm = () => {
     const [serialNumbers, setSerialNumbers] = useState([]);
     const [fileName, setFileName] = useState('');
+    const navigate = useNavigate(); 
     const [formData, setFormData] = useState({
         customerName: '',
         customerPhone: '',
@@ -36,7 +48,31 @@ const CustomerInfoForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const customers = loadFromLocalStorage('customers');
 
+        // Check if the customer already exists by name and email
+        const existingCustomer = customers.find(
+            (customer) =>
+                customer.name === formData.customerName &&
+                customer.email === formData.customerEmail
+        );
+
+        if (!existingCustomer) {
+            // Add new customer to localStorage
+            const newCustomer = {
+                name: formData.customerName,
+                email: formData.customerEmail,
+                address: formData.customerAddress,
+                phone: formData.customerPhone,
+            };
+            const updatedCustomers = [...customers, newCustomer];
+            saveToLocalStorage('customers', updatedCustomers);
+            alert('New customer added successfully!');
+        } else {
+            alert('Customer already exists.');
+        }
+
+        // Handle email sending (optional)
         const emailParams = {
             customer_name: formData.customerName,
             customer_phone: formData.customerPhone,
@@ -48,14 +84,15 @@ const CustomerInfoForm = () => {
         emailjs
             .send(
                 'service_dpek8vp', // Replace with your EmailJS Service ID
-            'template_72ki3ks', // Replace with your EmailJS Template ID
+                'template_72ki3ks', // Replace with your EmailJS Template ID
                 emailParams,
-                'rXqF8dWptwdk30yuD'   // Replace with your EmailJS public key
+                'rXqF8dWptwdk30yuD' // Replace with your EmailJS public key
             )
             .then(
                 (response) => {
                     alert('Email sent successfully!');
                     console.log('SUCCESS!', response.status, response.text);
+                    navigate('/tradein');
                 },
                 (error) => {
                     alert('Failed to send email. Please try again.');
@@ -63,9 +100,31 @@ const CustomerInfoForm = () => {
                 }
             );
     };
+    
+    const { state: tradeData } = useLocation(); // Get trade-in data from TradeinForm
+
 
     return (
         <div className="container mt-5">
+            <h2 className="text-center">Customer Information and Trade-In Summary</h2>
+
+<table className="table table-bordered mt-4">
+    <thead>
+        <tr>
+            <th>Device</th>
+            <th>Condition</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{tradeData.device}</td>
+            <td>{tradeData.condition}</td>
+            <td>{tradeData.quantity}</td>
+        </tr>
+    </tbody>
+</table>
+
             <h2 className="text-center">Enter Customer Information for Trade-In</h2>
             <form onSubmit={handleSubmit} className="mt-4">
                 <div className="row mb-3">
@@ -130,7 +189,7 @@ const CustomerInfoForm = () => {
                             id="serialUpload"
                             accept=".csv"
                             onChange={handleFileUpload}
-                            required
+                       
                         />
                         {fileName && <p className="mt-2">Uploaded: {fileName}</p>}
                     </div>

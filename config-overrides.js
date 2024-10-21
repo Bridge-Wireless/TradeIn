@@ -1,12 +1,17 @@
-module.exports = function override(config) {
-    if (config.devServer) {
-      config.devServer.setupMiddlewares = (middlewares, devServer) => {
-        devServer.app.get('/some/path', (req, res) => {
-          res.json({ message: 'Hello World' });
-        });
-        return middlewares;
-      };
-    }
-    return config;
-  };
-  
+module.exports = {
+  // ... other settings
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        enforce: 'pre',
+        loader: 'source-map-loader',
+        options: {
+          filterSourceMappingUrl: (url, resourcePath) => {
+            return !/bootstrap\.min\.css\.map$/.test(url);
+          },
+        },
+      },
+    ],
+  },
+};

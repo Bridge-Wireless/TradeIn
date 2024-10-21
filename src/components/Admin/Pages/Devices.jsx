@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CSVReader from 'react-csv-reader';
 import AdminNavigation from '../Layout/AdminNavigation';
 import TitleHeader from '../../TitleHeader';
-
+import ReactPaginate from 'react-paginate';
 // Helper functions to manage local storage
 const loadFromLocalStorage = () => {
   const data = localStorage.getItem('devices');
@@ -24,6 +24,9 @@ const Devices = () => {
     image: '',
   });
   const [editingIndex, setEditingIndex] = useState(null); // Track the editing state
+  const [currentPage, setCurrentPage] = useState(0); // Track the current page
+
+  const itemsPerPage = 5; // Set items per page
 
   useEffect(() => {
     saveToLocalStorage(devices);
@@ -33,6 +36,11 @@ const Devices = () => {
     const { name, value } = e.target;
     setNewDevice({ ...newDevice, [name]: value });
   };
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected); // Update the current page
+  };
+
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -108,6 +116,10 @@ const Devices = () => {
     link.click();
     document.body.removeChild(link);
   };
+  // Calculate the paginated devices
+  const offset = currentPage * itemsPerPage;
+  const paginatedDevices = devices.slice(offset, offset + itemsPerPage);
+  const pageCount = Math.ceil(devices.length / itemsPerPage);
 
   return (
     <div className='container-fluid'>
@@ -123,7 +135,7 @@ const Devices = () => {
         <main className='ms-auto col-10 col-xs-9 col-md-11 px-md-4'>
           <TitleHeader heading={'Devices'} />
 
-          <div className="container mt-5">
+          <div className=" mt-5">
             <h1 className="mb-4">Device Management</h1>
 
             <div className="mb-4">
@@ -210,6 +222,7 @@ const Devices = () => {
             <div className="mt-4">
               <h2>Device List</h2>
               {devices.length > 0 ? (
+                <>
                 <table className="table table-striped">
                   <thead>
                     <tr>
@@ -222,7 +235,7 @@ const Devices = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {devices.map((device, index) => (
+                    {/* {devices.map((device, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{device.modelName}</td>
@@ -238,17 +251,43 @@ const Devices = () => {
                           </button>
                         </td>
                       </tr>
-                    ))}
+                    ))} */}
+                     {paginatedDevices.map((device, index) => (
+                        <tr key={index}>
+                          <td>{offset + index + 1}</td>
+                          <td>{device.modelName}</td>
+                          <td>{device.memory}</td>
+                          <td>${device.priceWorking}</td>
+                          <td>${device.priceNonWorking}</td>
+                          <td>
+                            <button className="btn btn-warning  me-2" onClick={() => handleEdit(index)}>
+                              Edit
+                            </button>
+                            <button className="btn btn-danger" onClick={() => handleDelete(index)}>
+                              Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
+                <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'Next'}
+                    pageCount={pageCount}
+                    onPageChange={handlePageClick}
+                    containerClassName={'pagination'}
+                    activeClassName={'active'}
+                  />
+                </>
               ) : (
                 <p>No devices added yet.</p>
               )}
             </div>
 
-            <button className="btn btn-danger mt-3" onClick={clearDevices}>
+            {/* <button className="btn btn-danger mt-3" onClick={clearDevices}>
               Clear All Devices
-            </button>
+            </button> */}
           </div>
         </main>
       </div>

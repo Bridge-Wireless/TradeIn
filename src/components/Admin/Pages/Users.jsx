@@ -53,11 +53,13 @@ const Users = () => {
 
   const addUser = () => {
     if (newUser.name && newUser.role && newUser.email) {
-      setUsers((prev) => [...prev, newUser]);
+      const updatedUsers = [...users, { ...newUser, password: '123456' }];
+      setUsers(updatedUsers);
+      localStorage.setItem('users', JSON.stringify(updatedUsers)); // Store users array
       setNewUser({ name: '', role: 'User', email: '', avatar: '' });
     }
   };
-
+  
   const clearUsers = () => {
     setUsers([]);
     localStorage.removeItem('users');
@@ -78,7 +80,7 @@ const Users = () => {
 
           <main className='ms-auto col-10 col-xs-9 col-md-11 px-md-4'>
             <TitleHeader  heading={'Users'} />
-            <div className="container mt-5">
+            <div className=" mt-5">
       <h1 className="mb-4">User Management</h1>
 
       {/* Add User Form */}
@@ -181,9 +183,9 @@ const Users = () => {
       </div>
 
       {/* Clear Users Button */}
-      <button className="btn btn-danger mt-3" onClick={clearUsers}>
+      {/* <button className="btn btn-danger mt-3" onClick={clearUsers}>
         Clear All Users
-      </button>
+      </button> */}
     </div>
                 
           </main>

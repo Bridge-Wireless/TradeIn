@@ -79,9 +79,9 @@ const Incentive = () => {
               )}
             </div>
 
-            <button className="btn btn-danger mt-3" onClick={clearIncentives}>
+            {/* <button className="btn btn-danger mt-3" onClick={clearIncentives}>
               Clear Incentives
-            </button>
+            </button> */}
           </div>
         </main>
       </div>

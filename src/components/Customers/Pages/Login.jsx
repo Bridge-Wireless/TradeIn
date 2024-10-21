@@ -8,17 +8,33 @@ const Login = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    // const handleLogin = (e) => {
+    //     e.preventDefault();
+    //     const user = JSON.parse(localStorage.getItem('user'));
+
+    //     if (user && user.email === email && user.password === password) {
+    //         alert('Login successful!');
+    //         navigate('/'); // Redirect to dashboard or another page
+    //     } else {
+    //         setError('Invalid email or password');
+    //     }
+    // };
     const handleLogin = (e) => {
         e.preventDefault();
-        const user = JSON.parse(localStorage.getItem('user'));
-
-        if (user && user.email === email && user.password === password) {
+        const users = JSON.parse(localStorage.getItem('users')) || []; // Retrieve all users
+    
+        const validUser = users.find(
+            (user) => user.email === email && user.password === password
+        );
+    
+        if (validUser) {
             alert('Login successful!');
-            navigate('/'); // Redirect to dashboard or another page
+            navigate('/'); // Redirect to the dashboard
         } else {
             setError('Invalid email or password');
         }
     };
+    
 
     return (
         <div className="container mt-5">

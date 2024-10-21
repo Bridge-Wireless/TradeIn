@@ -10,7 +10,7 @@ const AdminLayout = ({ children }) => {
       <AdminHeader />
       <Outlet />
       
-      <AdminFooter />
+      {/* <AdminFooter /> */}
 
     </div>
   );

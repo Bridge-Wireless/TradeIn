@@ -8,10 +8,10 @@ function AdminHeader() {
                 <TfiMenu />
                 <span className='mx-2'>Evergreen Dashboard</span>
             </a>
-            <form className='d-flex mx-4 d-none d-md-flex' role='search'>
+            {/* <form className='d-flex mx-4 d-none d-md-flex' role='search'>
                 <input className='form-control me-2' type='search' placeholder='Search' aria-label='Search' />
                 <button className='btn btn-primary' type='submit'>Search</button>
-            </form>
+            </form> */}
         </header>
     )
 }
