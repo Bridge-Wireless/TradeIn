@@ -10,7 +10,8 @@ const TradeinForm = () => {
     const [notWorkingPrice, setNotWorkingPrice] = useState('');
     const [recyclePrice, setRecyclePrice] = useState('');
     const [submitButtonText, setSubmitButtonText] = useState('Please select a device');
-    const [ setImages] = useState({});
+    const [images, setImages] = useState({});
+
     const [isDeviceSelected, setIsDeviceSelected] = useState(false);
     const [quantity, setQuantity] = useState(1);
     const [condition, setCondition] = useState(''); // Initialize condition state
