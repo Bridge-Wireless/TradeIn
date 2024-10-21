@@ -1,0 +1,14 @@
+h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+hr {
+    width: 50%;
+    margin: 0 auto;
+    border-top: 2px solid #ddd;
+}
+
+img {
+    border-radius: 8px;
+}

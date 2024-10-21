@@ -1,0 +1,27 @@
+/* Ensure the body takes full height */
+html, body {
+    height: 100%; /* Full height for the body and html */
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper to contain the whole layout */
+.wrapper {
+    min-height: 100vh; /* Full height of the viewport */
+    display: flex;
+    flex-direction: column; /* Column layout for header, content, and footer */
+}
+
+/* Content should grow to take available space */
+.content {
+    flex: 1;
+}
+
+/* Footer styling */
+.footer {
+    background-color: #f8f9fa;
+    color: #000;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    padding: 1rem;
+}

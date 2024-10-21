@@ -1,0 +1,74 @@
+.hero {
+    background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+    background-size: cover;
+    padding: 100px 0;
+    color: white;
+    text-align: center;
+}
+
+.header-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.header-content p {
+    font-size: 1.2rem;
+}
+
+.btn-lg {
+    padding: 10px 30px;
+}
+.carousel-container {
+    margin-bottom: 30px; /* Adjust the space as needed */
+ 
+}
+.carousel-indicators{
+    margin-bottom: -2px !important;
+    
+}
+.carousel-indicators [data-bs-target] {
+    background-color: #343a40 !important; /* Dark gray color */
+    border-color: #343a40; /* Optional: border matches background */
+}
+
+.carousel-indicators .active {
+    background-color: #212529; /* Darker color for the active indicator */
+    border-color: #212529;
+}
+.carousel-control-next, .carousel-control-prev {
+
+    color: #343a40 !important; /* Dark gray color */
+  
+}
+
+.animated-background1 {
+    position: relative;
+    /* background: linear-gradient(45deg, #4e54c8, #8f94fb); */
+    /* background-size: 400% 400%; */
+    /* animation: gradientAnimation 10s ease infinite; */
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: radial-gradient(50% 123.47% at 50% 50%, #00ff94 0%, #720059 100%),
+    linear-gradient(121.28deg, #669600 0%, #ff0000 100%),
+    linear-gradient(360deg, #0029ff 0%, #8fff00 100%),
+    radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+    radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #51d500 100%);
+  background-blend-mode: screen, color-dodge, overlay, difference, normal;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
